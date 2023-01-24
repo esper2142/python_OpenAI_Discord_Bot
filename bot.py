@@ -1,3 +1,6 @@
+### written from scratch by Joshua King, 2023
+### refer to github repo for more information https://github.com/esper2142/DiscordBot/
+
 ### import libraries needed for bot
 
 from discord.ext import commands
