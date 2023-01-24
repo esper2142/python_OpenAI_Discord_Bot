@@ -14,18 +14,25 @@ import time
 
 
 ### setup token, intents, and other global commands such as bot
+### Replace INSERT_BOT_TOKEN_HERE with your discord bots generated token
+### make sure your both is set up with the proper intents and permissions via discords developer interface
 
-TOKEN = 'INSERT BOT TOKEN HERE'
+TOKEN = 'INSERT_BOT_TOKEN_HERE'
 
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
 ### follow an instagram user so your bot can post their content into a discord channel via webhook
+### find and change all instances of INSERT_IGRAM_USERNAME_HERE with the instagram username you wish to follow
+### find and change all instances of INSERT_WEBHOOK_URL_HERE with the webhook URL you've created for your respective discord channel server
+### find and change all instances of INSERT_CHANNEL_ID_HERE with the channel ID of the bot
 
-INSTAGRAM_USERNAME = os.environ.get('INSERT IGRAM USERNAME HERE')
 
-bot = commands.Bot(command_prefix='nelson ', intents=discord.Intents.all())
+INSTAGRAM_USERNAME = os.environ.get('INSERT_IGRAM_USERNAME_HERE')
+
+### change the prefix to whatever you desire. Here we use the standard !
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 ### establish webhook and channel for posting instagram messages
 
@@ -94,14 +101,14 @@ def main():
         else:
             os.environ["LAST_IMAGE_ID"] = get_last_publication_url(html)
             print("New image to post in discord.")
-            webhook(os.environ.get("https://discord.com/api/webhooks/1067155503089725440/HQENXyEIB5D5_75XFGrnWbwe90Ma_XpS9pg2zLkG-FS57BdBgRhA9ZutgSd_z-XSwX44"),
+            webhook(os.environ.get("INSERT_WEBHOOK_URL_HERE"),
                     get_instagram_html(INSTAGRAM_USERNAME))
     except Exception as e:
         print(e)
 
 
 if __name__ == "__main__":
-    if os.environ.get('IG_USERNAME') != None and os.environ.get('INSERT WEBHOOK URL HERE') != None:
+    if os.environ.get('INSERT_IGRAM_USERNAME_HERE') != None and os.environ.get('INSERT_WEBHOOK_URL_HERE') != None:
         while True:
             main()
             time.sleep(float(os.environ.get('TIME_INTERVAL') or 600)) # 600 = 10 minutes
@@ -115,14 +122,14 @@ async def on_ready():
     print(f'{bot.user} is online and ready to spread the literary gospel!')
     channel = bot.get_channel(INSERT_CHANNEL_ID_HERE)
 
-    await channel.send(f'Hi, I am NelsonBot - and I predict there will be Solipsism in Syria caused by Globalists when America loses it\'s hedgemony. Please type \'nelson helpme\' to see how I can serve you, master!')
+    await channel.send(f'Hi! I\'m your friendly neighborhood Discord bot, and I\'m ready to go!')
 
 ### when a member joins the discord, they will get mentioned with this welcome message and a message will be sent to the terminal
 
 @bot.event
 async def on_member_join(member):
     channel = bot.get_channel(INSERT_CHANNEL_ID_HERE)
-    await channel.send(f'Hi {member.name}, welcome to the Ditch Gang Discord server! I am your host, NelsonBot - and I predict there will be Solipsism in Syria caused by Globalists when America loses it\'s hedgemony. Please type \'nelson helpme\' to see how I can serve you, master!')
+    await channel.send(f'Hi {member.name}, welcome to theserver! Please type \'! helpme\' to see how I can serve you!')
     print(f'member {member.name} has joined the server')
 
 
@@ -137,12 +144,12 @@ async def helpme(ctx):
 
 
         *************************************
-
-        nelson <command>
+### change ! here if you used another prefix
+        ! <command>
 
         hello - I will greet you
         helpme - You're seeing that right now, aren't you? 
-        quote - I will present you with a random bit of prose 
+        quote - I will present you with a random quote
         guess - I will guess something for you
 
         *************************************
