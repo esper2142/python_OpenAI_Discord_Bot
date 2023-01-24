@@ -13,11 +13,13 @@ import time
 
 ### Set up token, intents, and other global commands such as bot
 
-TOKEN = 'MTA2MzEzMTAzMjE3OTcyNDMyMA.Gke-ZX.UUj7zVStZQoCPlavwtd2aW0fH1xZUuTlGUGnV4'
+TOKEN = 'INSERT TOKEN HERE'
 
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
+
+### follow an instagram user so your bot can post their content into a discord channel via webhook
 
 INSTAGRAM_USERNAME = os.environ.get('GuyQuintero')
 
