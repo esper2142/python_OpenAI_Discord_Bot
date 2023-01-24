@@ -1,3 +1,5 @@
+### import libraries needed for bot
+
 from discord.ext import commands
 import discord
 import random
@@ -11,9 +13,9 @@ import os
 import time
 
 
-### Set up token, intents, and other global commands such as bot
+### setup token, intents, and other global commands such as bot
 
-TOKEN = 'INSERT TOKEN HERE'
+TOKEN = 'INSERT BOT TOKEN HERE'
 
 intents = discord.Intents.default()
 intents.members = True
@@ -21,7 +23,7 @@ intents.message_content = True
 
 ### follow an instagram user so your bot can post their content into a discord channel via webhook
 
-INSTAGRAM_USERNAME = os.environ.get('GuyQuintero')
+INSTAGRAM_USERNAME = os.environ.get('INSERT IGRAM USERNAME HERE')
 
 bot = commands.Bot(command_prefix='nelson ', intents=discord.Intents.all())
 
@@ -99,7 +101,7 @@ def main():
 
 
 if __name__ == "__main__":
-    if os.environ.get('IG_USERNAME') != None and os.environ.get('https://discord.com/api/webhooks/1067155503089725440/HQENXyEIB5D5_75XFGrnWbwe90Ma_XpS9pg2zLkG-FS57BdBgRhA9ZutgSd_z-XSwX44') != None:
+    if os.environ.get('IG_USERNAME') != None and os.environ.get('INSERT WEBHOOK URL HERE') != None:
         while True:
             main()
             time.sleep(float(os.environ.get('TIME_INTERVAL') or 600)) # 600 = 10 minutes
@@ -111,7 +113,7 @@ if __name__ == "__main__":
 @bot.event
 async def on_ready():
     print(f'{bot.user} is online and ready to spread the literary gospel!')
-    channel = bot.get_channel(1022313760976806030)
+    channel = bot.get_channel(INSERT_CHANNEL_ID_HERE)
 
     await channel.send(f'Hi, I am NelsonBot - and I predict there will be Solipsism in Syria caused by Globalists when America loses it\'s hedgemony. Please type \'nelson helpme\' to see how I can serve you, master!')
 
@@ -119,7 +121,7 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    channel = bot.get_channel(1022313760976806030)
+    channel = bot.get_channel(INSERT_CHANNEL_ID_HERE)
     await channel.send(f'Hi {member.name}, welcome to the Ditch Gang Discord server! I am your host, NelsonBot - and I predict there will be Solipsism in Syria caused by Globalists when America loses it\'s hedgemony. Please type \'nelson helpme\' to see how I can serve you, master!')
     print(f'member {member.name} has joined the server')
 
@@ -138,10 +140,10 @@ async def helpme(ctx):
 
         nelson <command>
 
-        hello - I will greet you in the manner in which you are accustomed, you Obama loving Big pharma sponsor.
-        helpme - You're seeing that right now, aren't you? Jesus...the liberals have no platform do they?
-        quote - I will present you with a random bit of prose from the tortured asylum that is my mind. Can you handle it?
-        guess - I will guess whether or not you are a libtard, or GOP scum.
+        hello - I will greet you
+        helpme - You're seeing that right now, aren't you? 
+        quote - I will present you with a random bit of prose 
+        guess - I will guess something for you
 
         *************************************
 
@@ -156,7 +158,7 @@ async def hello(ctx):
     if ctx.author == bot.user:
         return
     else:
-        await ctx.send(f'Salutations {ctx.author.name}, you fuckin\' globalist donkey! \n (__)(__)====LLLL==D - - - - - - {ctx.author.name} \n \(that\'s a penis\)')
+        await ctx.send(f'Salutations {ctx.author.name}!')
     
     print(f'Command {ctx.command} invoked by {ctx.author}')
 
@@ -165,7 +167,7 @@ async def hi(ctx):
     if ctx.author == bot.user:
         return
     else:
-        await ctx.send(f'Salutations {ctx.author.name}, you fuckin\' globalist donkey! \n (__)(__)====LLLL==D - - - - - - {ctx.author.name} \n \(that\'s a penis\)')
+        await ctx.send(f'Salutations {ctx.author.name}')
     
     print(f'Command {ctx.command} invoked by {ctx.author}')
 
@@ -176,24 +178,9 @@ async def quote(ctx):
 
 ### load quotes here
 
-        'I fucked a turtle once.',
         'Dogs can\'t look up.',
-        'Which one of you libtards farted on my grandma!?',
-        'Crispr will replace all pharmaceutical drugs and therapies',
-        'I will dominate our discourse with long-winded diatribes to impress upon you all my ability to use a thesaurus',
-        'America will lose its hegemony as Russia cripples our economy with the ruble backed by the petrol dollar',
-        'Trump 2024!',
-        'Disney\'s stock will crumble due to woke ideology.',
-        'I had a successful personal training business until Obama ruined the economy.',
-        'Most Christians ignore the true books of the Bible, like the Book of Enoch.',
-        'I don\'t respect Donald Trump, I just agree with a lot of his policies.',
-        'If the Asian community gives into fear, they\'ll become susceptible like the black community, just like the real white supremacists want.',
-        'Your cognitive dissonance hamster is on overdrive.',
-        'Putin\'s next move will be humanitarian efforts, backed by a media blitz, absorbing the economic assets, and reinforcing the border with the help of Belarus. The humanitarian efforts taking priority until the population is docile and life returns to normal. Then his next move will be friendly acts to the rest of Eastern Europe, under the pretenses of assisting with their energy crisis.',
-        'I\'m expecting Biden to completely tank the economy with spending (by passing congress to shell out student debt forgiveness) and market neglect or jump into WW3 by the end of the year, or both.',
-        'If Putin wants to win this, he needs to level Kiev.',
-        'I already told you to do research yourself. I\'ve given you a few. My sources aren\'t what\'s under scrutiny here. It\'s your inane accusations. There you go moving the goal posts again.',
-
+        'I like turtles.',
+        
         ]
 
     await ctx.send(random.choice(quote_list))
@@ -206,8 +193,8 @@ async def guess(ctx):
 
 ### load party list here
 
-        'You are a libtard, and deserve your mediocre existance wallowing in the mire and muck of mediocrity.',
-        'You are a divine member of the MAGA political party. Infowars.com thanks you for your patronage, patriot!',
+        'First guest response here!',
+        'Second guest response here!',
     ]
     await ctx.send(random.choice(party_list))
 
