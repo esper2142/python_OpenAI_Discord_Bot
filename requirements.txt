@@ -1,0 +1,4 @@
+discord
+openai
+Pillow
+python-dotenv
