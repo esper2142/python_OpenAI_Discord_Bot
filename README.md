@@ -13,14 +13,12 @@ A general purpose Discord bot for use with an OpenAI API token and a Discord bot
 
 **2)** Create an OpenAI account and create an API key: https://platform.openai.com/account/api-keys . Please note this is NOT free.
 
-**3)** Copy and paste your created tokens into the appropriate variables inside of botvar.py .
+**3)** Rename `.env.example` to `.env` and paste your created tokens into the appropriate variables.
 
-**4)** Find the channel ID you'd like to post messages in your discord server, and paste over _INSERT CHANNEL ID HERE_ in bot.py . More information on how to find your channel ID here: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-
+**4)** Run `pip install -r requirements.txt` to install the script's dependencies.
 
-**5)** Upload your images for the script into a folder or the same directory as bot.py . Edit _INSERT_FILEPATH_HERE_ to match your filepath and file names.
+**5)** Find the channel ID you'd like to post messages in your discord server, and place it in DISCORD_BOT_TOKEN in the .env file . More information on how to find your channel ID here: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-
 
-**6)** Host your script somewhere and run it. Suggestions are: your own PC/NAS/Raspberry Pi, or a cloud online service like pythonanywhere or Amazon EC2.
+**6)** Upload your images for the script into a folder and put the full path in DISCORD_IMAGE_PATH in the .env file
 
-
-
-
+**7)** Host your script somewhere and run it. Suggestions are: your own PC/NAS/Raspberry Pi, or a cloud online service like pythonanywhere or Amazon EC2.
