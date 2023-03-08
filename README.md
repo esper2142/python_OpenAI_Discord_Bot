@@ -1,8 +1,13 @@
 
 **python_OpenAI_Discord_Bot v 1.2**
 
+**By esper2142 on 2/13/23**
+
+
 **1)** Changing for use with gpt-3.5-turbo
+
 **2)** Dramatic enhancements to performance
+
 **3)** Optional personality parameters
 
 
