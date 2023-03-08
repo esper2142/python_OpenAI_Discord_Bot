@@ -10,7 +10,7 @@
 
 **3)** Optional personality parameters
 
-
+------------------------------------------------------------------
 
 **python_OpenAI_Discord_Bot v 1.1**
 
