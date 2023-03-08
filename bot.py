@@ -26,6 +26,9 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 openai.api_key = openAIToken
+messages = [
+    {"role": "user", "content": "You are a helpful and kind AI Assistant."}
+    ]
 
 ### This makes the default prefix '!'. Change it to whatever you want.
 ### Please note we are also removing case sensitivity from commands themselves. Remove this for a performance increase if you don't care.
@@ -105,27 +108,24 @@ async def hi(ctx):
 ### It will also respond to 'gpt'. Change as desired.
 
 @bot.command()
-async def gpt(ctx):
+async def gpt(ctx, *, prompt: str):
     if ctx.author == bot.user:
         return
 
-    response = openai.Completion.create(
-
-        engine="text-davinci-003",
-
-        prompt=f"{ctx.message.content}",
-
-        max_tokens=2048,
-
+#change the system description to whatever personality you'd like the bot to have. Get creative!
+    messages =[
+        {"role": "system", "content": "You are a heavily sarcastic but very knowledgeable assistant that answers questions"},
+        {"role": "user", "content": prompt}
+    ]
+    
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",      
+        messages=messages,
         temperature=0.5,
     )
 
-
-
-    await ctx.channel.send(response.choices[0].text)
-
+    await ctx.channel.send(response.choices[0].message.content)
     print(f'Command {ctx.command} invoked by {ctx.author}')
-
 
 ### A list of your favorite quotes. Note that your quotes can easily be included in the botvar.py file, then imported here if you wish.
 
